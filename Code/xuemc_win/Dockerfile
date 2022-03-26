@@ -10,4 +10,4 @@ RUN pip install --upgrade setuptools==45.2.0
 RUN pip install --no-cache-dir -r ./requirements.txt
 #
 #CMD ["gunicorn","-c=./gunicorn_config.py","run:app"]
-CMD["python","run.py"]
+CMD ["python","run.py"]
