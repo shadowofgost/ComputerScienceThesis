@@ -1,10 +1,10 @@
-FROM python:3.8
+FROM python:3.8-slim
 #
 WORKDIR /home/xuemc
 #
 COPY ./ ./
 #
-RUN sudo apt-get install libpq-dev
+RUN apt-get install libpq-dev
 RUN pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/
 RUN pip config set install.trusted-host mirrors.aliyun.com
 RUN pip install --upgrade setuptools==45.2.0
