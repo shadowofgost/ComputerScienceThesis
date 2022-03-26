@@ -9,7 +9,7 @@
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/Code/xuemc_win/gunicorn_config.py
 # @LastAuthor       : Albert Wang
-# @LastTime         : 2022-03-25 21:19:56
+# @LastTime         : 2022-03-27 01:08:27
 # @Software         : Vscode
 """
 # config.py
@@ -37,7 +37,7 @@ from os.path import join, dirname
 #       range.
 #
 
-bind = "0.0.0.0:5010"
+bind = "127.0.0.1:5010"
 backlog = 2048
 
 #
