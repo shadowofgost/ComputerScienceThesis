@@ -84,10 +84,10 @@ backlog = 2048
 #       A positive integer. Generally set in the 1-5 seconds range.
 #
 # 并行工作进程数
-workers = 2
+workers = 3
 # 每个进程的开启线程
 ##threads = 2
-worker_class = "uvicorn.workers.UvicornWorker"
+worker_class = "gevent"
 # worker_connections最大客户端并发数量，默认情况下这个值为1000。此设置将影响gevent和eventlet工作模式
 worker_connections = 2000
 timeout = 180
