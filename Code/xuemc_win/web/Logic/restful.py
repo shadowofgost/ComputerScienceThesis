@@ -9,12 +9,12 @@
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/Code/xuemc_win/web/Logic/restful.py
 # @LastAuthor       : Albert Wang
-# @LastTime         : 2022-03-26 16:04:20
+# @LastTime         : 2022-03-26 16:59:45
 # @Software         : Vscode
 """
 # -*- coding: utf-8 -*-
 
-ROOT_DOMAIN = 'http://127.0.0.1:5000'
+ROOT_DOMAIN = 'http://127.0.0.1:5010'
 ROOT_RESTFUL = ROOT_DOMAIN + '/bd/api/v1.0'
 
 RESTFUL_SCHOOL = ROOT_RESTFUL + '/school'

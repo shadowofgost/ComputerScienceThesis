@@ -9,7 +9,7 @@
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/Code/xuemc_win/run.py
 # @LastAuthor       : Albert Wang
-# @LastTime         : 2022-03-26 15:46:04
+# @LastTime         : 2022-03-26 16:59:37
 # @Software         : Vscode
 """
 # -*- coding: utf-8 -*-
@@ -242,4 +242,4 @@ class Messages(Resource):
 api.add_resource(Messages, '/bd/api/messages')
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', debug=True, port=5000)
+    app.run(host='127.0.0.1', debug=True, port=5010)
