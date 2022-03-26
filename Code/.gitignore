@@ -1,0 +1,8 @@
+*.log
+**/env/**
+**/alembic/**
+**/.mypy_cache/**
+**/.history/**
+**/__pycache__/**
+*.pyc
+**/Backeup/**
