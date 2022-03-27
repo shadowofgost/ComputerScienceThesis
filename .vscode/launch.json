@@ -22,10 +22,10 @@
 			"console": "integratedTerminal"
 		},
 		{
-			"name": "FastApi",
+			"name": "Flask",
 			"type": "python",
 			"request": "launch",
-			"program": "${workspaceFolder}\\Code\\src\\main.py",
+			"program": "${workspaceFolder}\\Code\\xuemc_win\\run.py",
 			"console": "integratedTerminal"
 		},
 		{
