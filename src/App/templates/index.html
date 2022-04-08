@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+ (function () {
+        var amis = amisRequire("amis/embed");
+        // 用 amis 的 sdk 渲染内容区
+        amis.embed("#main", {
+          type: "page",
+          // title: "基础表单",
+          // subTitle: "展示一些常规的表单，包括验证、提示等等",
+          body: {
+          	type:'html',
+          	html:'<h1>欢迎来到后台管理系统：{{ session["name"] }}</h1>'
+          }
+        });
+      })();
+{% endblock content %}

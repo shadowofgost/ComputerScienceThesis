@@ -1,0 +1,394 @@
+{% extends 'base.html' %}
+{% block content %}
+ (function () {
+ 		function tick() { 
+     
+        var date = new Date(); 
+        this.year = date.getFullYear(); 
+        this.month = date.getMonth() + 1; 
+        this.date = date.getDate(); 
+        this.day = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")[date.getDay()];
+        this.hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(); 
+        this.minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(); 
+        this.second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds(); 
+        var currentTime =  this.year + "" + this.month + "" + this.date + "" + this.hour + "" + this.minute + "" + this.second;// + "" + this.day; 
+        return currentTime
+            
+    }
+ 		// 添加按钮
+ 		addjson={
+      	      "label": "新增学生",
+      	      "type": "button",
+      	      "actionType": "dialog",
+      	      "level": "success",
+      	      // "className": "m-b-sm",
+      	      "dialog": {
+      	        "title": "新增学生",
+      	        "size":'md',
+      	        "body": {
+      	          "type": "form",
+      	          "data": {
+      	                "code": tick(),
+      	                // 'admin':randomPassword(6),
+      	                // 'name':randomPassword(2),
+      	                'cid':'513723199112023637',
+  	              },
+      	          "api": "post:/student",
+      	          "reload": "window",
+      	          "controls": [
+      	            {
+                      "type": "text",
+                      "name": "name",
+                      "label": "姓名",
+                      required:1,
+                        validations:{
+                        maxLength:20,
+                      },
+                    },
+                    {
+                      "type": "select",
+                      "name": "class_id",
+                      "value":"",
+                      "label": "所在班级",
+                      "source": "${options}",
+                      searchable:true,
+                      required:1,
+                    },
+                    {
+                      "type": "text",
+                      "name": "code",
+                      "label": "学号",
+                      
+                      validations:{
+                        maxLength:20,
+                      },
+                    },
+                   {
+                      "type": "text",
+                      "name": "cid",
+                      "label": "身份证",
+                      required:1,
+                      validations:{
+                        isLength:18,
+                      },
+                    },
+                    {
+                      "type": "date",
+                      "name": "in_time",
+                      "label": "入学时间"
+                    },
+                    {
+                      "type": "text",
+                      "name": "l_name",
+                      "label": "联系人",
+                      required:1,
+                      validations:{
+                        maxLength:20,
+                      },
+                    },
+                    {
+                      "type": "text",
+                      "name": "l_phone",
+                      "label": "联系手机",
+                      required:1,
+                      validations:{
+                        isLength:11,
+                      },
+                    },
+                    {
+                      "type": "text",
+                      "name": "l2_name",
+                      "label": "备用联系人",
+                      validations:{
+                        maxLength:20,
+                      },
+                    },
+                    {
+                      "type": "text",
+                      "name": "l2_phone",
+                      "label": "备用联系手机",
+                      validations:{
+                        isLength:11,
+                      },
+                    },
+                    {
+                      "type": "text",
+                      "name": "add",
+                      "label": "住址",
+                      validations:{
+                        maxLength:85,
+                      },
+                    },
+                    {
+                      "type": "textarea",
+                      "name": "info",
+                      "label": "简介",
+                      validations:{
+                        maxLength:85,
+                      },
+                    },
+      	          ]
+      	        }
+      	      }
+      	    }
+      	// 顶部搜索
+      	topsertch={
+	      "title": "搜索",
+	      "controls": [
+	        {
+            "type": "datetime-range",
+            "name": "in_time",
+            "placeholder": "入学时间范围查询"
+          },
+	      ],
+        "actions": [
+              {
+                "type": "reset",
+                "label": "重置"
+              },
+              {
+                "type": "submit",
+                // className:"a-Button--primary",
+                "level": "success",
+                "label": "搜索"
+              }
+            ]
+	     }
+        var editbutton={
+              "tooltip": "修改",
+                "icon": "fa fa-pencil text-info",
+              "type": "button",
+              "actionType": "dialog",
+              "dialog": {
+                    "title": "修改学生",
+                    "size":'md',
+                    "body": {
+                      "type": "form",
+                      "data": {
+                      },
+                      "api": "put:/studentlist/${id}",
+                      "reload": "window",
+                      controls:addjson['dialog']['body']['controls']
+                    }
+              }
+            };
+
+        var amis = amisRequire("amis/embed");
+        // 用 amis 的 sdk 渲染内容区
+        amis.embed("#main", {
+          type: "page",
+          title: "学生列表",
+          initApi: "/classlist/minlist",
+          // subTitle: "展示一些常规的表单，包括验证、提示等等",
+          body: [
+          	{
+          	  "type": "page",
+          	  "body": {
+          	    "type": "crud",
+          	    syncLocation: false,
+          	    "api": "/studentlist",
+          	    "quickSaveItemApi": "put:/studentlist/${id}",
+          	    "saveImmediately":true,
+          	  	"name":"userList",
+          	    "filterTogglable": true,
+          	  	"headerToolbar": [
+          			addjson,
+          	  		// "filter-toggler",
+          	  	],
+      	  	    "footerToolbar": [
+          	  	      "statistics",
+          	  	      "switch-per-page",
+          	  	      "pagination"
+          	  	    ],
+          	  	// "filter":topsertch,
+          	    "columns": [
+          	      {
+          	        "name": "id",
+                    "sortable": true,
+          	        "label": "ID",
+                    "width":50,
+          	      },
+          	      {
+                    "name": "name",
+                    "searchable": true,
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        maxLength:20,
+                       },
+                    },
+                    "fixed": "left",
+                    "width":100,
+                    "label": "姓名"
+                  },
+                  {
+                    "name": "class_id",
+                    "label": "班级",
+                    "width":150,
+                    "quickEdit": {
+                        "mode":"inline",
+                          "type": "select",
+                          searchable:true,
+                          "source": "${options}",
+                      },
+                  },
+                  {
+                    "name": "code",
+                    "searchable": true,
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        maxLength:20,
+                       },
+                    },
+                    "width":100,
+                    "label": "学号"
+                  },
+                  {
+                    "name": "cid",
+                    "searchable": true,
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        isNumeric:true,
+                        isLength:18,
+                       },
+                    },
+                    "width":160,
+                    "label": "身份证"
+                  },
+          	      {
+                    "name": "in_time",
+                    "type":"date",
+                    "sortable": true,
+                    searchable:{
+                      "type": "datetime-range",
+                    },
+                    "width":80,
+                    "label": "入学时间",
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        isNumeric:true,
+                        isLength:18,
+                       },
+                    },
+                  },
+                  {
+                    "name": "out_time",
+                    "type":"date",
+                    "sortable": true,
+                    "width":80,
+                    "label": "离开时间",
+                    "quickEdit": {
+                      "type": "date",
+                    },
+                  },
+                  {
+                    "name": "l_name",
+                    "searchable": true,
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        maxLength:20,
+                       },
+                    },
+                    "width":100,
+                    "label": "联系人"
+                  },
+                  {
+                    "name": "l_phone",
+                    "searchable": true,
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        isNumeric:true,
+                        isLength:11,
+                       },
+                    },
+                    "width":100,
+                    "label": "联系人手机"
+                  },
+                  {
+                    "name": "l2_name",
+                    "searchable": true,
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        maxLength:20,
+                       },
+                    },
+                    "width":100,
+                    "toggled": false,
+                    "label": "备用联系人"
+                  },
+                  {
+                    "name": "l2_phone",
+                    "searchable": true,
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        isNumeric:true,
+                        isLength:11,
+                       },
+                    },
+                    "width":100,
+                    "toggled": false,
+                    "label": "备用联系人手机"
+                  },
+                  {
+                    "name": "add",
+                    "searchable": true,
+                    "quickEdit": {
+                      "type": "text",
+                       validations:{
+                        maxLength:85,
+                       },
+                    },
+                    "width":200,
+                    "toggled": false,
+                    "label": "  住址"
+                  },
+                  {
+                    "type": "tpl",
+                    "name": "info",
+                    "label": "简介",
+                    "tpl": "${info|truncate:10}",
+                    "width":200,
+                    "toggled": false,
+                    "popOver": {
+                      "body": {
+                        "type": "tpl",
+                        "tpl": "${info}"
+                      }
+                    }
+                  },
+          	      {
+  	              "type": "operation",
+  	              "label": "操作",
+                    "width":60,
+  	              "buttons": [
+  	                {
+  	                  "tooltip": "删除",
+  	                  "type": "button",
+  	                  "icon": "fa fa-times text-danger",
+  	                  "actionType": "ajax",
+  	                  // "level": "danger",
+  	                  "confirmText": "确认要删除？",
+  	                  "api": "delete:/studentlist/${id}"
+  	                },
+  	                 editbutton
+  	              ]
+  	            }
+          	    ]
+          	  }
+          	}
+
+
+
+
+
+          ]
+        });
+      })();
+{% endblock content %}

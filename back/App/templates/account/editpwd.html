@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+ (function () {
+        var amis = amisRequire("amis/embed");
+        // 用 amis 的 sdk 渲染内容区
+        amis.embed("#main", {
+          type: "page",
+          // title: "修改密码",
+          // subTitle: "展示一些常规的表单，包括验证、提示等等",
+          body: [
+          	{
+          	    "type": "form",
+          	    "title": "修改密码",
+          	    // debug:1,
+          	    'className':'w-xxl',
+			    resetAfterSubmit:true,
+          	    api:{
+          	         "method": "post",
+          	         "url": "/account/editpwd",
+          	    },
+          	    "controls": [
+          	      	{
+	          	        "type": "password",
+	          	        "label": "新密码",
+	          	        "name": "pwd",
+	          	        "validateOnChange": false,
+		            	required:1,
+	          	        validations:{
+	          	        	minLength:6,
+	          	        },
+          	      	},
+          	      	{
+	          	        "type": "password",
+	          	        "label": "确认密码",
+	          	        "name": "pwd2",
+	          	        "validateOnChange": false,
+		            	required:1,
+	          	        equalsField:"this.pwd"
+          	      	}
+          	    ]
+          	 }
+
+          ]
+        });
+      })();
+{% endblock content %}

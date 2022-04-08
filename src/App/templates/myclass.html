@@ -1,0 +1,202 @@
+<!--
+  * @Author           : Albert Wang
+  * @Time             : 2022-04-08 11:17:24
+  * @Description      
+  * @Email            : shadowofgost@outlook.com
+  * @FilePath         : /ComputerScienceThesis/back/jsjy/templates/myclass.html
+  * @LastTime         : 2022-04-08 13:02:43
+  * @LastAuthor       : Albert Wang
+  * @Software         : Vscode
+  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+-->
+{% extends 'base.html' %}
+{% block content %}
+ (function () {
+ 		function randomPassword(size)
+ 		{
+ 		  var seed = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z',
+ 		  'a','b','c','d','e','f','g','h','i','j','k','m','n','p','Q','r','s','t','u','v','w','x','y','z',
+ 		  '2','3','4','5','6','7','8','9'
+ 		  );//数组
+ 		  seedlength = seed.length;//数组长度
+ 		  var createPassword = '';
+ 		  for (i=0;i<size;i++) {
+ 		    j = Math.floor(Math.random()*seedlength);
+ 		    createPassword += seed[j];
+ 		  }
+ 		  return createPassword;
+ 		}
+ 		// 添加按钮
+ 		addjson={
+      	      "label": "新增班级",
+      	      "type": "button",
+      	      "actionType": "dialog",
+      	      "level": "success",
+      	      // "className": "m-b-sm",
+      	      "dialog": {
+      	        "title": "新增班级",
+      	        "size":'sm',
+      	        "body": {
+      	          "type": "form",
+      	          "data": {
+      	                // "password": randomPassword(8),
+      	                // 'admin':randomPassword(6),
+      	                // 'name':randomPassword(2),
+      	                // 'cid':'513723199112023637',
+  	              },
+      	          "api": "post:/myclass",
+      	          "reload": "window",
+      	          "controls": [
+      	            {
+      	              "type": "text",
+      	              "name": "name",
+      	              "label": "班级名称",
+		            	     required:1,
+  	              		validations:{
+		                	 maxLength:20,
+		                  },
+      	            },
+      	            {
+      	              "type": "select",
+      	              "name": "t_id",
+      	              "value":"",
+      	              "label": "班主任",
+                      "source": "${options}",
+                      searchable:true,
+		            	   required:1,
+
+      	            },
+
+      	          ]
+      	        }
+      	      }
+      	    }
+      	// 顶部搜索
+      	topsertch={
+	      "title": "搜索",
+	      "controls": [
+	        {
+	          "type": "text",
+	          "name": "name",
+	          "placeholder": "班级名称"
+	        },
+	        {
+            "type": "datetime-range",
+            "name": "addtime",
+            "placeholder": "添加时间范围查询"
+          },
+          {
+            "type": "select",
+            "name": "t_id",
+            "placeholder": "班主任",
+            searchable:true,
+            "source": "${options}",
+          },
+
+	      ],
+        "actions": [
+              {
+                "type": "reset",
+                "label": "重置"
+              },
+              {
+                "type": "submit",
+                // className:"a-Button--primary",
+                "level": "success",
+                "label": "搜索"
+              }
+            ]
+	    }
+
+
+        var amis = amisRequire("amis/embed");
+        // 用 amis 的 sdk 渲染内容区
+        amis.embed("#main", {
+          type: "page",
+          title: "班级列表",
+          initApi: "/userdata/minlist",
+          // subTitle: "展示一些常规的表单，包括验证、提示等等",
+          body: [
+          	{
+          	  "type": "page",
+          	  "body": {
+          	    "type": "crud",
+          	    syncLocation: false,
+          	    "api": "/classlist",
+          	    "quickSaveItemApi": "put:/classlist/${id}",
+          	    "saveImmediately":true,
+          	  	"name":"userList",
+          	    "filterTogglable": true,
+          	  	"headerToolbar": [
+          			addjson,
+          	  		"filter-toggler",
+          	  	],
+      	  	    "footerToolbar": [
+          	  	      "statistics",
+          	  	      "switch-per-page",
+          	  	      "pagination"
+          	  	    ],
+          	  	"filter":topsertch,
+          	    "columns": [
+          	      {
+          	        "name": "id",
+                    "sortable": true,
+          	        "label": "ID",
+          	      },
+          	      {
+          	        "name": "name",
+          	        "searchable": true,
+          	        "quickEdit": {
+      	                  "type": "text",
+      	                  validations:{
+	          	        	maxLength:20,
+	          	        },
+  	                },
+          	        "label": "班级名称"
+          	      },
+          	      {
+          	        "name": "t_id",
+          	        "label": "班主任",
+          	        "quickEdit": {
+                        "mode":"inline",
+      	                  "type": "select",
+                          searchable:true,
+                          "source": "${options}",
+	          	        },
+          	      },
+          	      {
+          	        "name": "addtime",
+          	        "type":"date",
+          	        "sortable": true,
+          	        "label": "添加时间"
+          	      },
+          	      {
+          	        "name": "user_count",
+                    "sortable": true,
+          	        "type":"text",
+          	        "label": "班级人数",
+          	      },
+          	      {
+  	              "type": "operation",
+  	              "label": "操作",
+  	              "buttons": [
+  	                {
+  	                  "tooltip": "删除",
+  	                  "type": "button",
+  	                  "icon": "fa fa-times text-danger",
+  	                  "actionType": "ajax",
+  	                  // "level": "danger",
+  	                  "confirmText": "确认要删除？",
+  	                  "api": "delete:/classlist/${id}"
+  	                },
+
+  	              ]
+  	            }
+          	    ]
+          	  }
+          	}
+
+          ]
+        });
+      })();
+{% endblock content %}

@@ -25,7 +25,7 @@ from flask import request
 from flask_restful import Resource
 import flask_restless
 
-from web.views import *
+from Api.views import *
 
 
 def post_get_one(result=None, **kw):
