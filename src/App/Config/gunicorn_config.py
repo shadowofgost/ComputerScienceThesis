@@ -7,9 +7,9 @@
 # @Time             : 2022-02-16 17:56:07
 # @Description      :
 # @Email            : shadowofgost@outlook.com
-# @FilePath         : /ComputerScienceThesis/src/Config/gunicorn_config.py
+# @FilePath         : /ComputerScienceThesis/src/App/Config/gunicorn_config.py
 # @LastAuthor       : Albert Wang
-# @LastTime         : 2022-03-29 15:58:48
+# @LastTime         : 2022-04-08 17:01:56
 # @Software         : Vscode
 """
 # config.py
@@ -37,7 +37,7 @@ from os.path import join, dirname
 #       range.
 #
 
-bind = "127.0.0.1:5010"
+bind = "127.0.0.1:8080"
 backlog = 2048
 
 #
