@@ -1,11 +1,20 @@
 version: "3.7"
 services:
-    app:
-        build: ./src
+    initial_app:
+        build: ./Code/xuemc_win
         ports:
             - "5010:5010"
         volumes:
             - /root/logs/xuemc:/home/xuemc/Logs
+        network_mode: "host"
+        restart: always
+        tty: true
+    main_app:
+        build: ./src
+        ports:
+            - "80:8080"
+        volumes:
+            - /root/logs/main:/home/Logs
         network_mode: "host"
         restart: always
         tty: true
