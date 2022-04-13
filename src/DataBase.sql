@@ -15,7 +15,7 @@ CREATE TABLE `admin` (
   `name` varchar(60) NOT NULL COMMENT '姓名',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) DEFAULT CHARSET=utf8;
 
 INSERT INTO `admin` (`id`, `admin`, `password`, `salt`, `level`, `name`, `status`) VALUES
 (1,	'admin',	'516eb11bbeb8a504dda4fd1198e042d7',	'e625fb438d13f7f6defbbacb1f0a6d84',	1,	'管理员',	1),
@@ -40,7 +40,7 @@ CREATE TABLE `class` (
   `addtime` int(11) NOT NULL COMMENT '添加时间',
   `user_count` int(11) NOT NULL COMMENT '班级学生人数',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='班级';
+)  DEFAULT CHARSET=utf8 COMMENT='班级';
 
 INSERT INTO `class` (`id`, `name`, `t_id`, `addtime`, `user_count`) VALUES
 (2,	'二班',	23,	1600760130,	2),
@@ -54,7 +54,7 @@ CREATE TABLE `score` (
   `score` float(3,1) NOT NULL COMMENT '分数',
   `kskc` varchar(60) NOT NULL COMMENT '考试课程',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='分数表';
+)  DEFAULT CHARSET=utf8 COMMENT='分数表';
 
 INSERT INTO `score` (`id`, `uid`, `k_time`, `score`, `kskc`) VALUES
 (1,	1,	1607011200,	80.0,	'语文'),
@@ -83,7 +83,7 @@ CREATE TABLE `student` (
   `add` varchar(255) NOT NULL COMMENT '住址',
   `class_id` int(11) NOT NULL COMMENT '班级id',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='学生';
+) DEFAULT CHARSET=utf8 COMMENT='学生';
 
 INSERT INTO `student` (`id`, `name`, `code`, `cid`, `in_time`, `out_time`, `info`, `l_name`, `l_phone`, `l2_name`, `l2_phone`, `add`, `class_id`) VALUES
 (1,	'张五',	'2020124152300',	'513723199112023637',	1607011200,	0,	'是个好学生哦',	'贞观三年',	'18888888888',	'张三姆',	'15555555555',	'什么路什么号',	4),
@@ -104,7 +104,7 @@ CREATE TABLE `teacher` (
   `oa_time` int(11) NOT NULL COMMENT '合同到期时间',
   `info` text NOT NULL COMMENT '简介',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='教师';
+)  DEFAULT CHARSET=utf8 COMMENT='教师';
 
 INSERT INTO `teacher` (`id`, `a_id`, `name`, `cid`, `in_time`, `out_time`, `oa_time`, `info`) VALUES
 (16,	35,	'大哥',	'513723199112024634',	1609344000,	1607011200,	1606924800,	'<p>啦啦啦</p>'),

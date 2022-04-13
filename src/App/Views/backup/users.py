@@ -23,7 +23,7 @@ from flask import (
     current_app as app,
 )
 import hashlib, time
-from ..Models import Admin, Teacher, Student, Class, Score, db
+from ..Models import Admin, Admin, Student, Class, Score, db
 from ..Utils import public_return as r
 
 users = Blueprint("users", __name__)
@@ -47,30 +47,30 @@ def userdata():
     in_time = request.values.get("in_time")
     oa_time = request.values.get("oa_time")
 
-    count = db.session.query(Teacher).count()
-    db_tc = db.session.query(Teacher)
+    count = db.session.query(Admin).count()
+    db_tc = db.session.query(Admin)
     offset = (page - 1) * perPage
     rt = {}
     ids = []
     temp = []
-    order = Teacher.id.desc()
+    order = Admin.id.desc()
     if orderBy and orderDir:  # 排序
-        temp1 = getattr(Teacher, orderBy)
+        temp1 = getattr(Admin, orderBy)
         order = getattr(temp1, orderDir)()
     db_tc.order_by(order)
-    where = [Teacher.id > 0]
+    where = [Admin.id > 0]
     if name:
-        where.append(Teacher.name.like("%" + name + "%"))
+        where.append(Admin.name.like("%" + name + "%"))
     if cid:
-        where.append(Teacher.cid.like("%" + cid + "%"))
+        where.append(Admin.cid.like("%" + cid + "%"))
     if in_time:
         temptime = in_time.split(",")
-        where.append(Teacher.in_time >= temptime[0])
-        where.append(Teacher.in_time <= temptime[1])
+        where.append(Admin.in_time >= temptime[0])
+        where.append(Admin.in_time <= temptime[1])
     if oa_time:
         temptime = oa_time.split(",")
-        where.append(Teacher.oa_time >= temptime[0])
-        where.append(Teacher.oa_time <= temptime[1])
+        where.append(Admin.oa_time >= temptime[0])
+        where.append(Admin.oa_time <= temptime[1])
     tc = db_tc.filter(*where).limit(perPage).offset(offset).all()
     # print(tc)
     for t in tc:
@@ -105,7 +105,7 @@ def userdata():
 @users.route("/userdata/<int:uid>", methods=["DELETE"])
 def delete_user(uid):
     sql = db.session.query(Admin).filter_by(id=uid).filter(Admin.level != 1).delete()
-    sql2 = db.session.query(Teacher).filter_by(a_id=uid).delete()
+    sql2 = db.session.query(Admin).filter_by(a_id=uid).delete()
     db.session.commit()
     return r({}, 0, "删除成功")
 
@@ -145,7 +145,7 @@ def add_user():
     j_data.setdefault("oa_time", 0)
     j_data.setdefault("out_time", 0)
     j_data.setdefault("info", "")
-    tc = Teacher(
+    tc = Admin(
         admin.id,
         j_data["name"],
         j_data["cid"],
@@ -187,7 +187,7 @@ def edit_user(uid):
         user.password = hashlib.md5(temp.encode(encoding="UTF-8")).hexdigest()
         user.salt = salt
     # 修改教师表
-    tc = db.session.query(Teacher).filter_by(a_id=uid).first()
+    tc = db.session.query(Admin).filter_by(a_id=uid).first()
     tc.name = j_data["name"]
     tc.cid = j_data["cid"]
     tc.in_time = j_data["in_time"]
@@ -201,7 +201,7 @@ def edit_user(uid):
 # 获取id名字，用于前端选择
 @users.route("/userdata/minlist", methods=["GET"])
 def get_minlist():
-    data = db.session.query(Teacher.id, Teacher.name).order_by(Teacher.id.desc()).all()
+    data = db.session.query(Admin.id, Admin.name).order_by(Admin.id.desc()).all()
     re = []
     for x in data:
         re.append({"label": x[1], "value": x[0]})

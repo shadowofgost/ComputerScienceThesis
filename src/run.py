@@ -7,7 +7,7 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/run.py
-# @LastTime         : 2022-04-08 16:41:56
+# @LastTime         : 2022-04-08 21:56:09
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -17,4 +17,5 @@ from App import create_app
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8080)
+    app = create_app("App.Config.Dev")
+    app.run(host="127.0.0.1", port=8080)

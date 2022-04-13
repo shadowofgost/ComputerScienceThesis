@@ -1,3 +1,14 @@
+<!--
+  * @Author           : Albert Wang
+  * @Time             : 2022-04-08 16:30:52
+  * @Description      :
+  * @Email            : shadowofgost@outlook.com
+  * @FilePath         : /ComputerScienceThesis/src/App/templates/login.html
+  * @LastTime         : 2022-04-10 19:20:48
+  * @LastAuthor       : Albert Wang
+  * @Software         : Vscode
+  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+-->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -19,15 +30,14 @@
 			href="{{url_for('static',filename='image/icon_main.ico')}}"
 			rel="shortcut icon"
 		/>
-		<title>用户登录</title>
 	</head>
 	<body>
 		<div class="form">
 			<h1>用户登录</h1>
-			<form method="post">
+			<form method="post" action="/login">
 				<input
 					type="text"
-					name="uname"
+					name="username"
 					placeholder="账号"
 					value=""
 				/><span></span>

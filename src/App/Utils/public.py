@@ -6,14 +6,17 @@
 # @Time             : 2022-04-08 11:17:23
 # @Description      :
 # @Email            : shadowofgost@outlook.com
-# @FilePath         : /ComputerScienceThesis/back/App/Utils/public.py
-# @LastTime         : 2022-04-08 15:01:43
+# @FilePath         : /ComputerScienceThesis/src/App/Utils/public.py
+# @LastTime         : 2022-04-12 22:05:34
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
 import json
 import decimal
+from flask import current_app as app
+import hashlib
+from time import mktime, strptime
 
 
 class DecimalEncoder(json.JSONEncoder):
@@ -40,3 +43,16 @@ def public_return(data, status=0, msg="", errors={}):
         t["msg"] = "验证错误"
         pass
     return json.dumps(t, ensure_ascii=False, cls=DecimalEncoder)
+
+
+def password_encode(password: str):
+    local_salt = app.config.get("SECRET_KEY")
+    temp = password + local_salt
+    jmd5 = hashlib.md5(temp.encode(encoding="UTF-8")).hexdigest()
+    return jmd5
+
+
+def format_time(time: str):
+    tmp = strptime(time, "%Y-%m-%d")
+    time_result = int(mktime(tmp))
+    return time_result
