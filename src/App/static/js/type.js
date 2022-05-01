@@ -5,7 +5,7 @@
  * @Description      :
  * @Email            : shadowofgost@outlook.com
  * @FilePath         : /ComputerScienceThesis/src/App/static/js/type.js
- * @LastTime         : 2022-04-13 14:54:40
+ * @LastTime         : 2022-05-01 15:24:44
  * @LastAuthor       : Albert Wang
  * @Software         : Vscode
  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -102,7 +102,7 @@ function type_crud() {
             "body": {
                 "type": "form",
                 "affixFooter": true,
-                "api": "post:/type_crudlist/${id}",
+                "api": "post:/type_crudlist/",
                 "reload": "window",
                 "controls": [{
                     "type": "text",
@@ -205,12 +205,12 @@ function type_crud() {
                         "fixed": "left",
                         //"width": 100,
                         "label": "公告类别名称",
-                                                "quickEdit": {
-                                                    "type": "text",
-                                                    "validations": {
-                                                        "maxLength": 60
-                                                    }
-                                                },
+                        "quickEdit": {
+                            "type": "text",
+                            "validations": {
+                                "maxLength": 60
+                            }
+                        },
                     },
                 ]
             }

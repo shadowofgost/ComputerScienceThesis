@@ -5,7 +5,7 @@
  * @Description      :
  * @Email            : shadowofgost@outlook.com
  * @FilePath         : /ComputerScienceThesis/src/App/static/js/score.js
- * @LastTime         : 2022-04-13 18:19:40
+ * @LastTime         : 2022-05-02 00:32:39
  * @LastAuthor       : Albert Wang
  * @Software         : Vscode
  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -299,5 +299,109 @@ function score() {
 };
 
 function lookscore() {
-    return 0
+    var topsertch = {
+        "title": "搜索",
+        "controls": [{
+                "type": "text",
+                "name": "class_name",
+                "placeholder": "课程名称"
+            },
+            {
+                "type": "datetime-range",
+                "name": "k_time",
+                "placeholder": "考试时间时间"
+            },
+            {
+                "type": "text",
+                "name": "student_name",
+                "placeholder": "学生姓名"
+            },
+        ],
+        "actions": [{
+                "type": "reset",
+                "label": "重置"
+            },
+            {
+                "type": "submit",
+                // className:"a-Button--primary",
+                "level": "success",
+                "label": "搜索"
+            },
+        ]
+    }
+    var main = {
+        type: "page",
+        title: "分数情况",
+        initApi: "/score/minlist",
+        // subTitle: "展示一些常规的表单，包括验证、提示等等",
+        body: [{
+                "type": "page",
+                "body": {
+                    "type": "crud",
+                    "syncLocation": false,
+                    "api": "/lookscorelist",
+                    "saveImmediately": true,
+                    "checkOnItemClick ": true,
+                    "saveImmediately": true,
+                    "name": "userList",
+                    "filterTogglable": true,
+                    "headerToolbar": [],
+                    "footerToolbar": [
+                        "statistics",
+                        "switch-per-page",
+                        "pagination"
+                    ],
+                    "filter": topsertch,
+                    "columns": [{
+                            "name": "id",
+                            "sortable": true,
+                            "label": "ID",
+                            //"width": 50
+                        },
+                        {
+                            "name": "student_id",
+                            "label": "学生",
+                            "sortable": true,
+                            "type": "select",
+                            "searchable": true,
+                            "source": "${students}",
+                        },
+                        {
+                            "name": "class_id",
+                            "label": "课程",
+                            "sortable": true,
+                            "type": "select",
+                            "searchable": true,
+                            "source": "${classes}",
+                        },
+                        {
+                            "name": "k_time",
+                            "type": "date",
+                            "sortable": true,
+                            "searchable": {
+                                "type": "datetime-range",
+                            },
+                            "width": 80,
+                            "label": "考试时间",
+                        },
+                        {
+                            "name": "score",
+                            "width": 100,
+                            "sortable": true,
+                            "label": "成绩",
+                            "searchable": {
+                                "type": "range",
+                                "label": "分数范围",
+                                "multiple": true,
+                            },
+                        },
+                    ]
+                }
+            }
+
+        ]
+    }
+    var amis = amisRequire("amis/embed");
+    // 用 amis 的 sdk 渲染内容区
+    amis.embed("#main", main);
 };

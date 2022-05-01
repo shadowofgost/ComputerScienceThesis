@@ -103,7 +103,7 @@ function department() {
             "body": {
                 "type": "form",
                 "affixFooter": true,
-                "api": "post:/departmentlist/${id}",
+                "api": "post:/departmentlist/",
                 "reload": "window",
                 "controls": [{
                         "type": "select",

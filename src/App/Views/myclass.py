@@ -7,19 +7,14 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/myclass.py
-# @LastTime         : 2022-04-13 19:59:22
+# @LastTime         : 2022-05-01 18:03:50
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
-from flask import (
-    Blueprint,
-    render_template,
-    request,
-    json,
-)
+from flask import Blueprint, render_template, request, json, session
 import time
-from ..Models import Class, Type, db, Teacher
+from ..Models import Class, Type, db, Teacher, Score
 from ..Utils import public_return as r, format_time
 
 myclass = Blueprint("myclass", __name__)
@@ -33,6 +28,8 @@ def index():
 ## 获取
 @myclass.route("/myclasslist", methods=["GET"])
 def get_myclass():
+    level = session.get("level")
+    user_id = session.get("uid")
     perPage = int(request.values.get("perPage"))
     page = int(request.values.get("page"))
     begin_time = request.values.get("begintime")
@@ -77,6 +74,26 @@ def get_myclass():
             tempsid.append(x[0])
             pass
         where.append(Class.teacher_id.in_(tempsid))
+    ##对不同的用户配置不同的逻辑
+    if level:
+        if level == 1:
+            pass
+        elif level == 2:
+            where.append(Class.teacher_id == user_id)
+        elif level == 3:
+            sids = (
+                db.session.query(Score.class_id)
+                .filter(Score.student_id == user_id)
+                .all()
+            )
+            tempsid = []
+            for x in sids:
+                tempsid.append(x[0])
+                pass
+            where.append(Class.id.in_(tempsid))
+        else:
+            return r({}, 1, "添加失败，数据库异常")
+    ##
     tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
     print(tc)
     temp = [
@@ -133,7 +150,7 @@ def add_myclass():
         db.session.commit()
     except:
         db.session.rollback()
-        return r({}, 0, "添加失败，数据库异常")
+        return r({}, 1, "添加失败，数据库异常")
     return r({}, 0, "添加成功")
 
 

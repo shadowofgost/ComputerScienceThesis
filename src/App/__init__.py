@@ -7,7 +7,7 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/__init__.py
-# @LastTime         : 2022-04-13 15:37:30
+# @LastTime         : 2022-05-01 17:59:21
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -24,6 +24,10 @@ from .Views import (
     department,
     type_crud,
     announcement,
+    image,
+    lookclass,
+    lookannouncement,
+    lookscore
 )
 
 
@@ -40,7 +44,10 @@ def create_app(config: str = "App.Config.Pro"):
     app.register_blueprint(department)
     app.register_blueprint(type_crud)
     app.register_blueprint(announcement)
-
+    app.register_blueprint(image)
+    app.register_blueprint(lookscore)
+    app.register_blueprint(lookclass)
+    app.register_blueprint(lookannouncement)
     @app.before_request
     def check_need_login():  # 判断登录
         # print(request.endpoint)

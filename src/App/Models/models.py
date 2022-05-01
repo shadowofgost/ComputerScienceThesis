@@ -7,7 +7,7 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Models/models.py
-# @LastTime         : 2022-04-13 17:45:02
+# @LastTime         : 2022-05-01 17:24:12
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -430,7 +430,7 @@ class Class(db.Model):
         doc="课程的结束时间",
     )
 
-    def __init__(self, name, teacher_id, begintime, endtime, user_count):
+    def __init__(self, name, teacher_id, begintime, endtime):
         self.name = name
         self.teacher_id = teacher_id
         self.begintime = begintime
@@ -540,6 +540,13 @@ class Announcement(db.Model):
         comment="公告的分类类别",
         doc="公告的分类类别",
     )
+    department_id = db.Column(
+        db.Integer,
+        nullable=False,
+        index=True,
+        comment="公告的发布部门",
+        doc="公告的发布部门",
+    )
     filedir = db.Column(
         db.Text,
         nullable=False,
@@ -550,11 +557,13 @@ class Announcement(db.Model):
         db.Integer, nullable=False, index=True, comment="添加时间", doc="添加时间"
     )
 
-    def __init__(self, name, type_id, filedir, add_time):
+    def __init__(self, id,name, type_id, filedir, add_time,department_id ):
+        self.id = id
         self.name = name
         self.type_id = type_id
         self.filedir = filedir
         self.add_time = add_time
+        self.department_id = department_id
 
     def __repr__(self):
         return "<Type id %r>" % self.id

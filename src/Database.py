@@ -7,11 +7,12 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/Database.py
-# @LastTime         : 2022-04-12 23:40:55
+# @LastTime         : 2022-05-01 16:44:50
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
+from secrets import choice
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from faker import Faker
@@ -585,6 +586,13 @@ class Announcement(db.Model):
         comment="公告的分类类别",
         doc="公告的分类类别",
     )
+    department_id = db.Column(
+        db.Integer,
+        nullable=False,
+        index=True,
+        comment="公告的发布部门",
+        doc="公告的发布部门",
+    )
     filedir = db.Column(
         db.Text,
         nullable=False,
@@ -595,12 +603,13 @@ class Announcement(db.Model):
         db.Integer, nullable=False, index=True, comment="添加时间", doc="添加时间"
     )
 
-    def __init__(self, id, name, type_id, filedir, add_time):
+    def __init__(self, id, name, type_id, filedir, add_time, department_id):
         self.id = id
         self.name = name
         self.type_id = type_id
         self.filedir = filedir
         self.add_time = add_time
+        self.department_id = department_id
 
     def __repr__(self):
         return "<Type id %r>" % self.id
@@ -615,17 +624,19 @@ def password_init(password):
 
 db.create_all()
 fake = Faker("zh_CN")
-department_list_extend = [
-    Department(id=0, id_parent=0, name=fake.country()),
-    Department(id=1, id_parent=0, name=fake.country()),
-    Department(id=2, id_parent=0, name=fake.country()),
-    Department(id=3, id_parent=0, name=fake.country()),
-]
 department_list = [
-    Department(id=i, id_parent=randint(0, 3), name=fake.country()) for i in range(4, 30)
+    Department(id=0, id_parent=0, name="苏州大学"),
+    Department(id=1, id_parent=0, name="苏州大学继续教育学院"),
+    Department(id=2, id_parent=0, name="苏州大学本科生"),
+    Department(id=3, id_parent=0, name="苏州大学研究生"),
+]
+department_names = ["文学院","传媒学院","社会学院","政治与公共管理学院","马克思主义学院","外国语学院","东吴商学院（财经学院）","王健法学院","教育学院","艺术学院","音乐学院","体育学院","金螳螂建筑学院","数学科学学院","物理科学与技术学院","光电科学与工程学院","能源学院","材料与化学化工学部","纳米科学技术学院","计算机科学与技术学院(软件学院)","电子信息学院","机电工程学院","沙钢钢铁学院","纺织与服装工程学院","轨道交通学院","巴斯德学院","基础医学与生物科学学院","放射医学与防护学院","公共卫生学院","药学院","护理学院","儿科临床医学院"]
+department_list_extend = [
+    Department(id=i, id_parent=randint(0, 3), name=choice(department_names)) for i in range(4, 30)
 ]
 department_list.extend(department_list_extend)
-type_list = [Type(id=i, name=fake.job()) for i in range(1, 10)]
+type_names=["人事任免","处分通告","科研通告","竞赛通告","学生工作","组织活动","日常管理","紧急通告","宣传通告","贯彻精神"]
+type_list = [Type(id=i, name=choice(type_names)) for i in range(1, 10)]
 admin_name = [fake.user_name() for i in range(20)]
 admin_list = [
     Admin(
@@ -686,10 +697,56 @@ student_list = [
     )
     for i in range(1, 100)
 ]
+class_names=[
+    "酒店管理信息系统",
+    "CAD/CAM",
+    "CAD/CAM综合实训",
+    "C语言程序设计",
+    "Excel在财务中的应用",
+    "Excel数据处理与分析",
+    "JAVA程序设计",
+    "MATLAB的工程应用",
+    "三维计算机辅助设计",
+    "专业模拟实习",
+    "中级财务",
+    "会计学",
+    "信息安全技术",
+    "制造执行系统技术应用",
+    "商业图形图像处理",
+    "商业文案处理",
+    "国际贸易实务",
+    "审计学",
+    "工程机械制图",
+    "心理实验编程",
+    "数据处理实用技术",
+    "数据库原理与设计",
+    "数据库原理综合实训",
+    "数据挖掘",
+    "数据结构",
+    "数控加工工艺与编程",
+    "服装CAD",
+    "电子CAD",
+    "电子商务案例分析",
+    "电气工程CAD制图",
+    "电气设计",
+    "社会科学统计软件应用",
+    "移动应用开发",
+    "程序设计基础",
+    "程序设计综合实训",
+    "网络媒体设计",
+    "网络程序设计及应用",
+    "虚拟仪器设计",
+    "计算机基础",
+    "计算机辅助服装设计应用",
+    "计算机辅助设计",
+    "跨境电商实务",
+    "软件测试与质量保证",
+    "面向对象程序设计",
+]
 class_list = [
     Class(
         id=i,
-        name=fake.company(),
+        name=choice(class_names),
         teacher_id=randint(1, 29),
         begintime=time.time(),
         endtime=time.time(),
@@ -713,6 +770,7 @@ announcement_list = [
         id=i,
         name=fake.sentence(),
         type_id=randint(1, 9),
+        department_id=randint(1, 29),
         filedir=fake.file_path(),
         add_time=time.time(),
     )

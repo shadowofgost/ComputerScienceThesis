@@ -1,14 +1,14 @@
 // -*- coding: utf-8 -*-
 /**
- * @Author           : Albert Wang
- * @Time             : 2022-04-09 18:11:34
- * @Description      :
- * @Email            : shadowofgost@outlook.com
- * @FilePath         : /ComputerScienceThesis/src/App/static/js/student.js
- * @LastTime         : 2022-04-13 10:00:39
- * @LastAuthor       : Albert Wang
- * @Software         : Vscode
- * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+  * @Author           : Albert Wang
+  * @Time             : 2022-04-09 18:11:34
+  * @Description      :
+  * @Email            : shadowofgost@outlook.com
+  * @FilePath         : /ComputerScienceThesis/src/App/static/js/student.js
+  * @LastTime         : 2022-05-01 15:24:36
+  * @LastAuthor       : Albert Wang
+  * @Software         : Vscode
+  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
  */
 function student() {
     var topsertch = {
@@ -144,7 +144,7 @@ function student() {
                 "type": "form",
                 "affixFooter": true,
                 "columnCount": 3,
-                "api": "post:/studentlist/${id}",
+                "api": "post:/studentlist/",
                 "reload": "window",
                 "controls": [{
                         "type": "select",

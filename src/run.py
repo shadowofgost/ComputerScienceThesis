@@ -7,14 +7,14 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/run.py
-# @LastTime         : 2022-04-08 21:56:09
+# @LastTime         : 2022-05-01 16:05:39
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
 from App import create_app
 
-app = create_app()
+# app = create_app()
 
 if __name__ == "__main__":
     app = create_app("App.Config.Dev")

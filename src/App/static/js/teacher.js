@@ -5,7 +5,7 @@
  * @Description      :
  * @Email            : shadowofgost@outlook.com
  * @FilePath         : /ComputerScienceThesis/src/App/static/js/teacher.js
- * @LastTime         : 2022-04-13 10:05:04
+ * @LastTime         : 2022-05-01 15:24:23
  * @LastAuthor       : Albert Wang
  * @Software         : Vscode
  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -134,7 +134,7 @@ function teacher() {
                 "type": "form",
                 "affixFooter": true,
                 "columnCount": 3,
-                "api": "post:/teacherlist/${id}",
+                "api": "post:/teacherlist/",
                 "reload": "window",
                 "controls": [{
                         "type": "select",

@@ -7,7 +7,7 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/__init__.py
-# @LastTime         : 2022-04-13 15:37:24
+# @LastTime         : 2022-05-01 18:00:52
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -21,3 +21,7 @@ from .admin import admin  #
 from .department import department  #
 from .type import type_crud  #
 from .announcement import announcement  #
+from .image import image  #
+from .lookscore import lookscore  #
+from .lookannouncement import lookannouncement  #
+from .lookclass import lookclass  #
