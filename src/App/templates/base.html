@@ -4,8 +4,8 @@
   * @Description      :
   * @Email            : shadowofgost@outlook.com
   * @FilePath         : /ComputerScienceThesis/src/App/templates/base.html
-  * @LastTime         : 2022-05-01 17:49:48
-  * @LastAuthor       : Albert Wang
+  * @LastTime         : 2022-05-07 10:47:52
+  * @LastAuthor       : Please set LastEditors
   * @Software         : Vscode
   * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 -->
@@ -22,13 +22,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 		<link
 			rel="stylesheet"
-			href="{{url_for('static',filename='amis/sdk_backup.css')}}"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{url_for('static',filename='amis/sdk.css')}}"
+			title="cxd"
+			href="{{url_for('static',filename='amis/cxd.css')}}"
 		/>
 		<script src="{{url_for('static',filename='amis/sdk.js')}}"></script>
+		<script src="{{url_for('static',filename='js/account.js')}}"></script>
 		<script src="{{url_for('static',filename='js/admin.js')}}"></script>
 		<script src="{{url_for('static',filename='js/announcement.js')}}"></script>
 		<script src="{{url_for('static',filename='js/class.js')}}"></script>
@@ -38,6 +36,7 @@
 		<script src="{{url_for('static',filename='js/teacher.js')}}"></script>
 		<script src="{{url_for('static',filename='js/type.js')}}"></script>
 		<script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+		<script src="{{url_for('static',filename='js/index.js')}}"></script>
 		<script type="text/javascript">
 			// 来个闭包，免得污染全局变量。
 			(function (require) {
@@ -60,8 +59,8 @@
 				}
 				// 初始化导航展开效果。
 				function initNav($) {
-					$(".a-AsideNav-itemArrow").click(function () {
-						const $item = $(this).closest(".a-AsideNav-item");
+					$(".cxd-AsideNav-itemArrow").click(function () {
+						const $item = $(this).closest(".cxd-AsideNav-item");
 						const isOpen = $item.hasClass("is-open");
 
 						if (isOpen) {
@@ -106,320 +105,307 @@
 	<!-- 这个一定要记得加，否则导航部分没样式 -->
 	<body class="amis-scope">
 		<div
-			class="a-Layout a-Layout--withAside a-Layout--headerFixed a-Layout--asideFixed a-Layout--noFooter"
+			class="cxd-Layout cxd-Layout--withAside cxd-Layout--headerFixed cxd-Layout--asideFixed cxd-Layout--noFooter"
 		>
-			<div class="a-Layout-header">
-				<div>
-					<div class="a-Layout-brandBar">
-						<button class="pull-right visible-xs">
-							<i class="glyphicon glyphicon-align-justify"></i>
-						</button>
-						<div class="a-Layout-brand">
-							<i class="fa fa-paw"></i>
-							<span class="hidden-folded m-l-sm">管理系统</span>
-						</div>
+			<div class="cxd-Layout-header">
+				<div class="cxd-Layout-brandBar">
+					<div
+						class="cxd-Layout-cxd-Layout-offScreenBtn pull-right visible-xs"
+					>
+						<i class="bui-icon iconfont icon-collapse"></i>
 					</div>
-					<div class="a-Layout-headerBar">
-						<div class="nav navbar-nav hidden-xs">
-							<button
-								id="aside-toggler"
-								type="button"
-								class="a-Button a-Button--link a-Button--iconOnly navbar-btn"
-							>
-								<i class="fa fa-dedent"></i>
-							</button>
-						</div>
-						<div class="hidden-xs p-t-sm pull-right">
-							<div class="dropdown">
-								<!--  <span><span class="pull-right m-b-n-sm m-l-sm"> <span> <i class="iconfont icon-admin"></i> </span> <i class="on md b-white bottom"></i> </span> <span class="hidden-sm hidden-md">
-            admin</span> <b class="caret"></b> </span>  -->
-							</div>
-						</div>
+					<div class="cxd-Layout-brand">
+						<i class="fa fa-paw"></i>
+						<span class="hidden-folded m-l-sm">管理系统</span>
 					</div>
 				</div>
+				<div class="cxd-Layout-headerBar">
+					<button
+						type="button"
+						class="cxd-Button cxd-Button--link navbar-btn"
+					>
+						<i class="fa fa-dedent fa-fw"></i>
+					</button>
+				</div>
 			</div>
-			<div class="a-Layout-aside">
-				<div class="a-Layout-asideWrap">
-					<div id="asideInner" class="a-Layout-asideInner">
+			<div class="cxd-Layout-aside">
+				<div class="cxd-Layout-asideWrap">
+					<div id="asideInner" class="cxd-Layout-asideInner">
 						<!--导航部分-->
-						<nav class="a-AsideNav">
-							<ul class="a-AsideNav-list">
-								<li class="a-AsideNav-label">
+						<nav class="cxd-AsideNav">
+							<ul class="cxd-AsideNav-list">
+								<li class="cxd-AsideNav-label">
 									<span>导航</span>
 								</li>
 								<li
-									class="a-AsideNav-item {% if request.path == '/index' %}is-open is-active{% endif %}"
+									class="cxd-AsideNav-item {% if request.path == '/index' %} is-open is-active {% endif %}"
 								>
 									<a href="/index">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-home"
+											class="cxd-AsideNav-itemIcon fa fa-home"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>首页</span
 										>
 									</a>
 								</li>
-
-								<li
-									class="a-AsideNav-item {% if '/account' in request.path %}is-open{% endif %}"
-								>
+								<li class="cxd-AsideNav-item is-open">
 									<a>
 										<span
-											class="a-AsideNav-itemArrow"
+											class="cxd-AsideNav-itemArrow"
 										></span>
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-user"
+											class="cxd-AsideNav-itemIcon fa fa-user"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>个人相关</span
 										>
 									</a>
-									<ul class="a-AsideNav-subList">
-										<li
-											class="a-AsideNav-item {% if '/editpwd' in request.path %}is-active{% endif %}"
-										>
-											<a href="/account/editpwd">
+									<ul class="cxd-AsideNav-subList">
+										<li class="cxd-AsideNav-subHeader">
+											<a>
 												<span
-													class="a-AsideNav-itemLabel"
-													>修改密码</span
+													class="cxd-AsideNav-itemArrow"
+												></span>
+												<i
+													class="cxd-AsideNav-itemIcon fa fa-user"
+												></i>
+												<span
+													class="cxd-AsideNav-itemLabel"
+													>用户相关</span
+												>
+											</a>
+										</li>
+										<li
+											class="cxd-AsideNav-item {% if '/account' in request.path %}is-active{% endif %}"
+										>
+											<a href="/account">
+												<span
+													class="cxd-AsideNav-itemLabel"
+													>个人信息修改</span
 												></a
 											>
 										</li>
-										<li class="a-AsideNav-item">
+										<li class="cxd-AsideNav-item">
 											<a href="/account/logout">
 												<span
-													class="a-AsideNav-itemLabel"
+													class="cxd-AsideNav-itemLabel"
 													>退出登录</span
-												></a
-											>
+												>
+											</a>
 										</li>
 									</ul>
 								</li>
 								{% if session["level"] == 1 %}
 								<li
-									class='a-AsideNav-item {% if request.path == "/users" %}is-open is-active{% endif %}''
-								>
-									<a href="/users">
-										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
-										></i>
-										<span class="a-AsideNav-itemLabel"
-											>用户管理</span
-										>
-									</a>
-									<div class="a-AsideNav-tooltip">
-										用户管理
-									</div>
-								</li>
-								<li
-									class='a-AsideNav-item {% if request.path == "/admin" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item is-top {% if request.path == '/admin' %}is-open is-active{% endif %}"
 								>
 									<a href="/admin">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>管理员管理</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										管理员管理
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/teacher" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item is-top {% if request.path == '/teacher' %}is-open is-active{% endif %}"
 								>
 									<a href="/teacher">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>教师管理</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										教师管理
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/student" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/student' %}is-open is-active{% endif %}"
 								>
 									<a href="/student">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>学生管理</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										学生管理
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/department" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/department' %}is-open is-active{% endif %}"
 								>
 									<a href="/department">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-glass"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>部门管理</span
 										>
 									</a>
-									<div class="a-AsscoreideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										部门管理
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/myclass" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/myclass' %}is-open is-active{% endif %}"
 								>
 									<a href="/myclass">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-glass"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>课程管理</span
 										>
 									</a>
-									<div class="a-AsscoreideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										课程管理
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/score" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/score' %}is-open is-active{% endif %}"
 								>
 									<a href="/score">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>成绩管理</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										成绩管理
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/type_crud" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/type_crud' %}is-open is-active{% endif %}"
 								>
 									<a href="/type_crud">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>公告类别管理</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										公告类别管理
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/announcement" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/announcement' %}is-open is-active{% endif %}"
 								>
 									<a href="/announcement">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>公告管理</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										公告管理
 									</div>
 								</li>
 								{% elif session["level"] == 2 %}
 								<li
-									class='a-AsideNav-item {% if request.path == "/lookclass" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/lookclass' %}is-open is-active{% endif %}"
 								>
 									<a href="/lookclass">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>课程查看</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										课程查看
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/score" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/score' %}is-open is-active{% endif %}"
 								>
 									<a href="/score">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>成绩管理</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										成绩管理
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/lookannouncement" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/lookannouncement' %}is-open is-active{% endif %}"
 								>
 									<a href="/lookannouncement">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>公告查看</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										公告查看
 									</div>
 								</li>
 								{% elif session["level"] == 3 %}
 								<li
-									class='a-AsideNav-item {% if request.path == "/lookclass" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/lookclass' %}is-open is-active{% endif %}"
 								>
 									<a href="/lookclass">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>课程查看</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										课程查看
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/lookscore" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/lookscore' %}is-open is-active{% endif %}"
 								>
 									<a href="/lookscore">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>成绩查看</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										成绩查看
 									</div>
 								</li>
 								<li
-									class='a-AsideNav-item {% if request.path == "/lookannouncement" %}is-open is-active{% endif %}'
+									class="cxd-AsideNav-item {% if request.path == '/lookannouncement' %}is-open is-active{% endif %}"
 								>
 									<a href="/lookannouncement">
 										<i
-											class="a-AsideNav-itemIcon glyphicon glyphicon-list-alt"
+											class="cxd-AsideNav-itemIcon fa fa-list-alt"
 										></i>
-										<span class="a-AsideNav-itemLabel"
+										<span class="cxd-AsideNav-itemLabel"
 											>公告查看</span
 										>
 									</a>
-									<div class="a-AsideNav-tooltip">
+									<div class="cxd-AsideNav-tooltip">
 										公告查看
 									</div>
 								</li>
@@ -430,8 +416,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="a-Layout-content" role="main">
-				<div id="main" class="a-Layout-body"></div>
+			<div class="cxd-Layout-content" role="main">
+				<div id="main" class="cxd-Layout-body"></div>
 			</div>
 		</div>
 		<script type="text/javascript">

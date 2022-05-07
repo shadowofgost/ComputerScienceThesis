@@ -7,8 +7,8 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/lookscore.py
-# @LastTime         : 2022-05-01 18:12:42
-# @LastAuthor       : Albert Wang
+# @LastTime         : 2022-05-07 14:19:11
+# @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
@@ -39,7 +39,6 @@ def get_score():
     stu_search["name"] = request.values.get("student_name")
     orderBy = request.values.get("orderBy")
     orderDir = request.values.get("orderDir")
-    count = db.session.query(Score).count()
     db_tc = db.session.query(Score)
     offset = (page - 1) * perPage
     rt = {}
@@ -95,7 +94,7 @@ def get_score():
             return r({}, 1, "添加失败，数据库异常")
     ##
     tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
-    print(tc)
+    count = db.session.query(Score).filter(*where).count()
     temp = [
         {
             "id": t.id,

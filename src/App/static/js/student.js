@@ -1,14 +1,26 @@
 // -*- coding: utf-8 -*-
 /**
-  * @Author           : Albert Wang
-  * @Time             : 2022-04-09 18:11:34
-  * @Description      :
-  * @Email            : shadowofgost@outlook.com
-  * @FilePath         : /ComputerScienceThesis/src/App/static/js/student.js
-  * @LastTime         : 2022-05-01 15:24:36
-  * @LastAuthor       : Albert Wang
-  * @Software         : Vscode
-  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+ * @Author           : Albert Wang
+ * @Time             : 2022-04-16 14:32:36
+ * @Description      :
+ * @Email            : shadowofgost@outlook.com
+ * @FilePath         : /ComputerScienceThesis/src/App/static/js/student.js
+ * @LastTime         : 2022-05-07 14:02:45
+ * @LastAuthor       : Albert Wang
+ * @Software         : Vscode
+ * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+ */
+// -*- coding: utf-8 -*-
+/**
+ * @Author           : Albert Wang
+ * @Time             : 2022-04-09 18:11:34
+ * @Description      :
+ * @Email            : shadowofgost@outlook.com
+ * @FilePath         : /ComputerScienceThesis/src/App/static/js/student.js
+ * @LastTime         : 2022-05-01 15:24:36
+ * @LastAuthor       : Albert Wang
+ * @Software         : Vscode
+ * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
  */
 function student() {
     var topsertch = {
@@ -638,43 +650,4 @@ function student() {
     var amis = amisRequire("amis/embed");
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
-};
-
-function tick() {
-    var date = new Date();
-    this.year = date.getFullYear();
-    this.month = date.getMonth() + 1;
-    this.date = date.getDate();
-    this.day = new Array(
-        "星期日",
-        "星期一",
-        "星期二",
-        "星期三",
-        "星期四",
-        "星期五",
-        "星期六"
-    )[date.getDay()];
-    this.hour =
-        date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-    this.minute =
-        date.getMinutes() < 10 ?
-        "0" + date.getMinutes() :
-        date.getMinutes();
-    this.second =
-        date.getSeconds() < 10 ?
-        "0" + date.getSeconds() :
-        date.getSeconds();
-    var currentTime =
-        this.year +
-        "" +
-        this.month +
-        "" +
-        this.date +
-        "" +
-        this.hour +
-        "" +
-        this.minute +
-        "" +
-        this.second; // + "" + this.day;
-    return currentTime;
 };

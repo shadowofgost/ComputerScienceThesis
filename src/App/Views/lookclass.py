@@ -7,8 +7,8 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/lookclass.py
-# @LastTime         : 2022-05-01 18:03:18
-# @LastAuthor       : Albert Wang
+# @LastTime         : 2022-05-07 14:18:31
+# @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
@@ -40,7 +40,6 @@ def get_lookclass():
     orderBy = request.values.get("orderBy")
     orderDir = request.values.get("orderDir")
     print(search)
-    count = db.session.query(Class).count()
     db_tc = db.session.query(Class)
     offset = (page - 1) * perPage
     rt = {}
@@ -95,7 +94,7 @@ def get_lookclass():
             return r({}, 1, "添加失败，数据库异常")
     ##
     tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
-    print(tc)
+    count = db.session.query(Class).filter(*where).count()
     temp = [
         {
             "id": t.id,

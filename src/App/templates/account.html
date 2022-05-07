@@ -1,0 +1,12 @@
+<!--
+  * @Author           : Albert Wang
+  * @Time             : 2022-05-07 10:13:24
+  * @Description      :
+  * @Email            : shadowofgost@outlook.com
+  * @FilePath         : /ComputerScienceThesis/src/App/templates/account.html
+  * @LastTime         : 2022-05-07 10:46:41
+  * @LastAuthor       : Please set LastEditors
+  * @Software         : Vscode
+  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+-->
+{% extends "base.html" %} {% block content %} (function () { {% if session["level"] == 1 %} adminaccount(); {% elif session["level"] == 2 %} teacheraccount(); {% elif session["level"] == 3 %} teacheraccount(); {% endif%}})(); console.log("success") {% endblock content %}

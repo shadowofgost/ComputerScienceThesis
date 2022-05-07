@@ -7,8 +7,8 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/student.py
-# @LastTime         : 2022-04-13 17:21:00
-# @LastAuthor       : Albert Wang
+# @LastTime         : 2022-05-07 14:20:57
+# @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
@@ -54,7 +54,6 @@ def get_student():
     orderBy = request.values.get("orderBy")
     orderDir = request.values.get("orderDir")
     print(search)
-    count = db.session.query(Student).count()
     db_tc = db.session.query(Student)
     offset = (page - 1) * perPage
     rt = {}
@@ -74,8 +73,8 @@ def get_student():
         temptime = in_time.split(",")
         where.append(Student.in_time >= temptime[0])
         where.append(Student.in_time <= temptime[1])
-    tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
-    print(tc)
+    tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all(
+    count = db.session.query(Student).filter(*where).count()
     temp = [
         {
             "id": t.id,

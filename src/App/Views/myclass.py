@@ -7,7 +7,7 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/myclass.py
-# @LastTime         : 2022-05-01 18:03:50
+# @LastTime         : 2022-05-02 22:19:13
 # @LastAuthor       : Albert Wang
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -95,6 +95,7 @@ def get_myclass():
             return r({}, 1, "添加失败，数据库异常")
     ##
     tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
+    count = db.session.query(Class).filter(*where).count()
     print(tc)
     temp = [
         {
@@ -202,6 +203,7 @@ def add_many_myclass():
 def edit_myclass(id):
     data = request.get_data()
     j_data = json.loads(data)
+    print(j_data)
     ##验证系统
     myclass = (
         db.session.query(Class)
@@ -212,7 +214,7 @@ def edit_myclass(id):
     if myclass is not None:
         return r({}, 1, "课程名称已存在")
     try:
-        db.session.query(myclass).filter_by(id=id).update(j_data)
+        db.session.query(Class).filter_by(id=id).update(**j_data)
         db.session.commit()
         return r({}, 0, "修改成功")
     except:

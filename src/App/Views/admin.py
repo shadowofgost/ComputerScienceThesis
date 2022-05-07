@@ -7,12 +7,11 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/admin.py
-# @LastTime         : 2022-04-13 16:31:53
-# @LastAuthor       : Albert Wang
+# @LastTime         : 2022-05-07 14:17:20
+# @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
-import time
 from flask import (
     Blueprint,
     render_template,
@@ -46,7 +45,6 @@ def get_admin():
     orderBy = request.values.get("orderBy")
     orderDir = request.values.get("orderDir")
     print(search)
-    count = db.session.query(Admin).count()
     db_tc = db.session.query(Admin)
     offset = (page - 1) * perPage
     rt = {}
@@ -63,7 +61,7 @@ def get_admin():
         temp1 = getattr(Admin, k).like("%" + v + "%")
         where.append(temp1)
     tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
-    print(tc)
+    count = db.session.query(Admin).filter(*where).count()
     temp = [
         {
             "id": t.id,

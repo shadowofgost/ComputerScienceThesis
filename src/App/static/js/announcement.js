@@ -5,19 +5,7 @@
  * @Description      :
  * @Email            : shadowofgost@outlook.com
  * @FilePath         : /ComputerScienceThesis/src/App/static/js/announcement.js
- * @LastTime         : 2022-05-01 22:33:19
- * @LastAuthor       : Albert Wang
- * @Software         : Vscode
- * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
- */
-// -*- coding: utf-8 -*-
-/**
- * @Author           : Albert Wang
- * @Time             : 2022-04-16 14:32:36
- * @Description      :
- * @Email            : shadowofgost@outlook.com
- * @FilePath         : /ComputerScienceThesis/src/App/static/js/announcement.js
- * @LastTime         : 2022-05-01 17:13:03
+ * @LastTime         : 2022-05-07 14:55:09
  * @LastAuthor       : Albert Wang
  * @Software         : Vscode
  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -34,6 +22,20 @@ function announcement() {
                 "type": "text",
                 "name": "name",
                 "placeholder": "公告的主题"
+            },
+            {
+                "type": "select",
+                "name": "department_id",
+                "value": "",
+                "label": "所在部门/专业",
+                "source": "${departments}",
+            },
+            {
+                "type": "select",
+                "name": "type_id",
+                "value": "",
+                "label": "公告所属类别",
+                "source": "${types}",
             },
         ],
         "actions": [{
@@ -126,6 +128,21 @@ function announcement() {
         "confirmText": "确认要删除？",
         "api": "delete:/studentlist/${id}"
     };
+    var lookbutton = {
+        "tooltip": "查看",
+        //"icon": "fa fa-pencil text-info",
+        "type": "button",
+        "actionType": "dialog",
+        "label": "查看",
+        "dialog": {
+            "title": "查看公告的具体信息",
+            "size": "lg",
+            "body": {
+                "type": "html",
+                "html": "<div>${filedir}</div>"
+            }
+        }
+    };
     var main = {
         "type": "page",
         "title": "公告列表",
@@ -171,7 +188,8 @@ function announcement() {
                         "width": 60,
                         "buttons": [
                             delbutton,
-                            editbutton
+                            editbutton,
+                            lookbutton
                         ],
                         "fixed": "left",
                     }, {
@@ -243,6 +261,20 @@ function lookannouncement() {
                 "name": "name",
                 "placeholder": "公告的主题"
             },
+            {
+                "type": "select",
+                "name": "department_id",
+                "value": "",
+                "label": "所在部门/专业",
+                "source": "${departments}",
+            },
+            {
+                "type": "select",
+                "name": "type_id",
+                "value": "",
+                "label": "公告所属类别",
+                "source": "${types}",
+            },
         ],
         "actions": [{
                 "type": "reset",
@@ -255,6 +287,21 @@ function lookannouncement() {
                 "label": "搜索"
             }
         ]
+    };
+    var lookbutton = {
+        "tooltip": "查看",
+        //"icon": "fa fa-pencil text-info",
+        "type": "button",
+        "actionType": "dialog",
+        "label": "查看",
+        "dialog": {
+            "title": "查看公告的具体信息",
+            "size": "lg",
+            "body": {
+                "type": "html",
+                "html": "<div>${filedir}</div>"
+            }
+        }
     };
     var main = {
         "type": "page",
@@ -278,6 +325,14 @@ function lookannouncement() {
                 ],
                 "filter": topsertch,
                 "columns": [{
+                        "type": "operation",
+                        "label": "操作",
+                        "width": 60,
+                        "buttons": [
+                            lookbutton
+                        ],
+                        "fixed": "left",
+                    }, {
                         "name": "id",
                         "sortable": true,
                         "label": "ID",

@@ -7,8 +7,8 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/announcement.py
-# @LastTime         : 2022-05-01 15:45:46
-# @LastAuthor       : Albert Wang
+# @LastTime         : 2022-05-07 15:42:00
+# @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
@@ -24,8 +24,7 @@ from flask import (
     current_app as app,
 )
 from ..Models import Admin, Teacher, Student, Class, Department, Type, db, Announcement
-from ..Utils import public_return as r, password_encode, format_time
-from .public import insert_validation_login, update_validation_login
+from ..Utils import public_return as r
 
 announcement = Blueprint("announcement", __name__)
 
@@ -43,6 +42,8 @@ def get_announcement():
     add_time = request.values.get("add_time")
     search = {}
     search["name"] = request.values.get("name")
+    department_id = request.values.get("department_id")
+    type_id = request.values.get("type_id")
     orderBy = request.values.get("orderBy")
     orderDir = request.values.get("orderDir")
     print(search)
@@ -66,8 +67,12 @@ def get_announcement():
         temptime = add_time.split(",")
         where.append(Announcement.add_time >= temptime[0])
         where.append(Announcement.add_time <= temptime[1])
+    if department_id:
+        where.append(Announcement.department_id == department_id)
+    if type_id:
+        where.append(Announcement.type_id == type_id)
     tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
-    print(tc)
+    count = db.session.query(Announcement).filter(*where).count()
     temp = [
         {
             "id": t.id,
@@ -113,7 +118,7 @@ def get_many_announcement():
 def add_announcement():
     data = request.get_data()
     j_data = json.loads(data)
-    j_data["add_time"]=time.time()
+    j_data["add_time"] = time.time()
     cl = Announcement(**j_data)
     try:
         db.session.add(cl)
@@ -129,7 +134,7 @@ def add_announcement():
 def edit_announcement(id):
     data = request.get_data()
     j_data = json.loads(data)
-    j_data["add_time"]=time.time()
+    j_data["add_time"] = time.time()
     cl = Announcement(**j_data)
     try:
         db.session.query(Announcement).filter_by(id=id).update(j_data)

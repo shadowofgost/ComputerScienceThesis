@@ -7,8 +7,8 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/type.py
-# @LastTime         : 2022-04-13 17:25:01
-# @LastAuthor       : Albert Wang
+# @LastTime         : 2022-05-07 14:21:48
+# @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
@@ -39,7 +39,6 @@ def get_type_crud():
     orderBy = request.values.get("orderBy")
     orderDir = request.values.get("orderDir")
     print(search)
-    count = db.session.query(Type).count()
     db_tc = db.session.query(Type)
     offset = (page - 1) * perPage
     rt = {}
@@ -56,7 +55,7 @@ def get_type_crud():
         temp1 = getattr(Type, k).like("%" + v + "%")
         where.append(temp1)
     tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
-    print(tc)
+    count = db.session.query(Type).filter(*where).count()
     temp = [
         {
             "id": t.id,

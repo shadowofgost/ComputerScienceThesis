@@ -72,7 +72,7 @@ def get_teacher():
         where.append(Teacher.in_time >= temptime[0])
         where.append(Teacher.in_time <= temptime[1])
     tc = db_tc.order_by(order).filter(*where).limit(perPage).offset(offset)  # .all()
-    print(tc)
+    count = db.session.query(Teacher).filter(*where).count()
     temp = [
         {
             "id": t.id,
