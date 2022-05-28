@@ -7,7 +7,7 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/admin.py
-# @LastTime         : 2022-05-07 14:17:20
+# @LastTime         : 2022-05-09 17:27:59
 # @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -74,7 +74,6 @@ def get_admin():
     ]
     rt["count"] = count
     rt["rows"] = temp
-    # rt['hasNext']=1
     return r(rt)
 
 

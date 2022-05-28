@@ -4,10 +4,10 @@
   * @Description      :
   * @Email            : shadowofgost@outlook.com
   * @FilePath         : /ComputerScienceThesis/src/App/templates/index.html
-  * @LastTime         : 2022-05-06 16:49:15
-  * @LastAuthor       : Albert Wang
+  * @LastTime         : 2022-05-10 03:50:11
+  * @LastAuthor       : Please set LastEditors
   * @Software         : Vscode
   * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 -->
-{% extends "base.html" %} {% block content %} (function () { lookindex(); })();
-console.log("success") {% endblock content %}
+{% extends 'base.html' %} {% block content %} (function () { var
+amis=amisRequire("amis/embed"); amis.embed("#main", {type: "page", body:{type:'html', html:'<h1>欢迎来到学校管理系统：{{ session["name"] }}</h1>' } }); })(); {% endblock content %}

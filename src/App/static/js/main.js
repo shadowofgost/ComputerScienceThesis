@@ -5,6 +5,30 @@
  * @Description      :
  * @Email            : shadowofgost@outlook.com
  * @FilePath         : /ComputerScienceThesis/src/App/static/js/main.js
+ * @LastTime         : 2022-05-10 03:49:58
+ * @LastAuthor       : Albert Wang
+ * @Software         : Vscode
+ * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+ */
+// -*- coding: utf-8 -*-
+/**
+ * @Author           : Albert Wang
+ * @Time             : 2022-05-07 14:41:23
+ * @Description      :
+ * @Email            : shadowofgost@outlook.com
+ * @FilePath         : /ComputerScienceThesis/src/App/static/js/main.js
+ * @LastTime         : 2022-05-08 21:08:59
+ * @LastAuthor       : Albert Wang
+ * @Software         : Vscode
+ * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+ */
+// -*- coding: utf-8 -*-
+/**
+ * @Author           : Albert Wang
+ * @Time             : 2022-05-07 14:41:23
+ * @Description      :
+ * @Email            : shadowofgost@outlook.com
+ * @FilePath         : /ComputerScienceThesis/src/App/static/js/main.js
  * @LastTime         : 2022-05-07 14:41:26
  * @LastAuthor       : Albert Wang
  * @Software         : Vscode
@@ -685,6 +709,7 @@ function admin() {
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
+
 function announcement() {
     var topsertch = {
         "title": "搜索",
@@ -786,7 +811,7 @@ function announcement() {
             "body": {
                 "type": "form",
                 "affixFooter": true,
-                "api": "put:/studentlist/${id}",
+                "api": "put:/announcementlist/${id}",
                 "reload": "window",
                 "controls": addjson["dialog"]["body"]["controls"],
             }
@@ -801,7 +826,7 @@ function announcement() {
         "actionType": "ajax",
         "level": "danger",
         "confirmText": "确认要删除？",
-        "api": "delete:/studentlist/${id}"
+        "api": "delete:/announcementlist/${id}"
     };
     var lookbutton = {
         "tooltip": "查看",
@@ -814,7 +839,7 @@ function announcement() {
             "size": "lg",
             "body": {
                 "type": "html",
-                "html": "<div>${filedir}</div>"
+                "html": "${filedir}"
             }
         }
     };
@@ -974,7 +999,7 @@ function lookannouncement() {
             "size": "lg",
             "body": {
                 "type": "html",
-                "html": "<div>${filedir}</div>"
+                "html": "${filedir}"
             }
         }
     };
@@ -1050,6 +1075,7 @@ function lookannouncement() {
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
+
 function class_crud() {
     var topsertch = {
         "title": "搜索",
@@ -1415,6 +1441,7 @@ function lookclass() {
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
+
 function department() {
     var topsertch = {
         "title": "搜索",
@@ -1648,18 +1675,20 @@ function department() {
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
+
 function lookindex() {
     var main = {
         type: "page",
         body: {
             type: "html",
-            html: '<h1> 欢迎来到后台管理系统：session["name"]</h1>'
+            html: '<h1> 欢迎来到学校管理系统：session["name"]</h1>'
         }
     };
     var amis =
         amisRequire("amis/embed"); // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
+
 function score() {
     // 添加按钮
     var topsertch = {
@@ -2055,6 +2084,7 @@ function lookscore() {
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
+
 function student() {
     var topsertch = {
         "title": "搜索",
@@ -2684,6 +2714,7 @@ function student() {
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
+
 function teacher() {
     var topsertch = {
         "title": "搜索",
@@ -3235,6 +3266,7 @@ function teacher() {
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
+
 function type_crud() {
     var topsertch = {
         "title": "搜索",
@@ -3445,4 +3477,3 @@ function type_crud() {
     // 用 amis 的 sdk 渲染内容区
     amis.embed("#main", main);
 };
-

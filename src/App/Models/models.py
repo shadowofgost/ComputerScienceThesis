@@ -550,8 +550,8 @@ class Announcement(db.Model):
     filedir = db.Column(
         db.Text,
         nullable=False,
-        comment="公告的文件路径",
-        doc="公告的文件路径",
+        comment="公告的内容",
+        doc="公告的内容",
     )
     add_time = db.Column(
         db.Integer, nullable=False, index=True, comment="添加时间", doc="添加时间"

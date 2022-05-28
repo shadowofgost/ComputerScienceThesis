@@ -1,0 +1,36 @@
+"filename", "language", "Python", "LaTeX", "Markdown", "BibTeX", "pip requirements", "YAML", "JSON", "TeX", "Batch", "Shell Script", "comment", "blank", "total"
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\Database.py", "Python", -657, 0, 0, 0, 0, 0, 0, 0, 0, 0, -43, -46, -746
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\docker-compose.yml", "YAML", 0, 0, 0, 0, 0, -11, 0, 0, 0, 0, 0, -1, -12
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\requirements.txt", "pip requirements", 0, 0, 0, 0, -45, 0, 0, 0, 0, 0, 0, -1, -46
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\abstract.tex", "LaTeX", 0, -10, 0, 0, 0, 0, 0, 0, 0, 0, -3, -3, -16
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\acknowlegements.tex", "LaTeX", 0, -7, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5, -12
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\appendix.tex", "LaTeX", 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, -7
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\conclusion.tex", "LaTeX", 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, -6, -14
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\main.tex", "LaTeX", 0, -23, 0, 0, 0, 0, 0, 0, 0, 0, -35, -14, -72
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\mainbody.tex", "LaTeX", 0, -270, 0, 0, 0, 0, 0, 0, 0, 0, -1, -83, -354
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\preamble.tex", "LaTeX", 0, -68, 0, 0, 0, 0, 0, 0, 0, 0, -29, -10, -107
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\preface.tex", "LaTeX", 0, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, -6
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\references.tex", "LaTeX", 0, -15, 0, 0, 0, 0, 0, 0, 0, 0, -2, -1, -18
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\1.0\refs.bib", "BibTeX", 0, 0, 0, -42, 0, 0, 0, 0, 0, 0, 0, -3, -45
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\LaTeX-Template\README.md", "Markdown", 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, -4, -7
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis-bachelor-main\sudathesis-bachelor-main\README.md", "Markdown", 0, 0, -66, 0, 0, 0, 0, 0, 0, 0, 0, -16, -82
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis-bachelor-main\sudathesis-bachelor-main\src\main.tex", "LaTeX", 0, -127, 0, 0, 0, 0, 0, 0, 0, 0, -26, -44, -197
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis-bachelor-main\sudathesis-bachelor-main\src\references.bib", "BibTeX", 0, 0, 0, -15, 0, 0, 0, 0, 0, 0, 0, 0, -15
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis\back.json", "JSON", 0, 0, 0, 0, 0, 0, -88, 0, 0, 0, 0, -1, -89
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis\scripts\clean.bat", "Batch", 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, -5
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis\scripts\clean.sh", "Shell Script", 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, -1, -1, -5
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis\scripts\complie.bat", "Batch", 0, 0, 0, 0, 0, 0, 0, 0, -19, 0, 0, -1, -20
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis\scripts\complie.sh", "Shell Script", 0, 0, 0, 0, 0, 0, 0, 0, 0, -15, -4, -1, -20
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis\sudathesis.cls", "TeX", 0, 0, 0, 0, 0, 0, 0, -228, 0, 0, -69, -41, -338
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\sudathesis\test.tex", "LaTeX", 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\abstract.tex", "LaTeX", 0, -10, 0, 0, 0, 0, 0, 0, 0, 0, -4, -3, -17
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\acknowlegements.tex", "LaTeX", 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -7
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\appendix.tex", "LaTeX", 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -9
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\conclusion.tex", "LaTeX", 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, -11
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\main.tex", "LaTeX", 0, -23, 0, 0, 0, 0, 0, 0, 0, 0, -35, -14, -72
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\mainbody.tex", "LaTeX", 0, -41, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, -43
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\preamble.tex", "LaTeX", 0, -25, 0, 0, 0, 0, 0, 0, 0, 0, -30, -8, -63
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\preface.tex", "LaTeX", 0, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\references.tex", "LaTeX", 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5
+"c:\Users\shadowofgost\OneDrive\桌面\Desktop\Documents\ComputerScienceThesis\论文\LatexTemplate\undergraduate-1.01\tex.tex", "LaTeX", 0, -22, 0, 0, 0, 0, 0, 0, 0, 0, -2, -1, -25
+"Total", "-", -657, -688, -69, -57, -45, -11, -88, -228, -24, -18, -284, -320, -2489

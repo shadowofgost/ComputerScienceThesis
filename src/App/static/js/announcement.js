@@ -1,5 +1,17 @@
 // -*- coding: utf-8 -*-
 /**
+  * @Author           : Albert Wang
+  * @Time             : 2022-04-16 14:32:36
+  * @Description      :
+  * @Email            : shadowofgost@outlook.com
+  * @FilePath         : /ComputerScienceThesis/src/App/static/js/announcement.js
+  * @LastTime         : 2022-05-08 21:08:16
+  * @LastAuthor       : Albert Wang
+  * @Software         : Vscode
+  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+ */
+// -*- coding: utf-8 -*-
+/**
  * @Author           : Albert Wang
  * @Time             : 2022-04-16 14:32:36
  * @Description      :
@@ -111,7 +123,7 @@ function announcement() {
             "body": {
                 "type": "form",
                 "affixFooter": true,
-                "api": "put:/studentlist/${id}",
+                "api": "put:/announcementlist/${id}",
                 "reload": "window",
                 "controls": addjson["dialog"]["body"]["controls"],
             }
@@ -126,7 +138,7 @@ function announcement() {
         "actionType": "ajax",
         "level": "danger",
         "confirmText": "确认要删除？",
-        "api": "delete:/studentlist/${id}"
+        "api": "delete:/announcementlist/${id}"
     };
     var lookbutton = {
         "tooltip": "查看",
@@ -139,7 +151,7 @@ function announcement() {
             "size": "lg",
             "body": {
                 "type": "html",
-                "html": "<div>${filedir}</div>"
+                "html": "${filedir}"
             }
         }
     };
@@ -299,7 +311,7 @@ function lookannouncement() {
             "size": "lg",
             "body": {
                 "type": "html",
-                "html": "<div>${filedir}</div>"
+                "html": "${filedir}"
             }
         }
     };

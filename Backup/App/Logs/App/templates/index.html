@@ -1,0 +1,17 @@
+<!--
+  * @Author           : Albert Wang
+  * @Time             : 2022-04-08 16:30:52
+  * @Description      :
+  * @Email            : shadowofgost@outlook.com
+  * @FilePath         : /ComputerScienceThesis/src/App/templates/index.html
+  * @LastTime         : 2022-04-10 20:30:39
+  * @LastAuthor       : Albert Wang
+  * @Software         : Vscode
+  * @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
+-->
+{% extends "base.html" %} {% block content %} (function () { var amis =
+amisRequire("amis/embed"); // 用 amis 的 sdk 渲染内容区 amis.embed("#main", {
+type: "page", // title: "基础表单", // subTitle:
+"展示一些常规的表单，包括验证、提示等等", body: { type:'html', html:'
+<h1>欢迎来到后台管理系统：{{ session["name"] }}</h1>
+' } }); })(); {% endblock content %}

@@ -7,7 +7,7 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/account.py
-# @LastTime         : 2022-05-07 13:58:36
+# @LastTime         : 2022-05-08 19:48:59
 # @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -50,11 +50,11 @@ def login():
         user = teacher
     elif admin:
         if admin.status == 0:
-            return r({}, 1, "账号已锁定")
+            return redirect("/login")
         level = 1
         user = admin
     else:
-        return r({}, 1, "账号不存在")
+        return redirect("/login")
     if jmd5 == user.password:
         session["uid"] = user.id
         session["name"] = user.name
@@ -64,7 +64,7 @@ def login():
         return redirect("/index")
         # return r({"is_login": 0}, 0, "欢迎登录：" + (user.name))
     else:
-        return r({}, 1, "账号密码错误")
+        return redirect("/login")
 
 
 # 首页

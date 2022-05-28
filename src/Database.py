@@ -7,8 +7,8 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/Database.py
-# @LastTime         : 2022-05-01 16:44:50
-# @LastAuthor       : Albert Wang
+# @LastTime         : 2022-05-09 02:57:17
+# @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
 """
@@ -632,11 +632,11 @@ department_list = [
 ]
 department_names = ["文学院","传媒学院","社会学院","政治与公共管理学院","马克思主义学院","外国语学院","东吴商学院（财经学院）","王健法学院","教育学院","艺术学院","音乐学院","体育学院","金螳螂建筑学院","数学科学学院","物理科学与技术学院","光电科学与工程学院","能源学院","材料与化学化工学部","纳米科学技术学院","计算机科学与技术学院(软件学院)","电子信息学院","机电工程学院","沙钢钢铁学院","纺织与服装工程学院","轨道交通学院","巴斯德学院","基础医学与生物科学学院","放射医学与防护学院","公共卫生学院","药学院","护理学院","儿科临床医学院"]
 department_list_extend = [
-    Department(id=i, id_parent=randint(0, 3), name=choice(department_names)) for i in range(4, 30)
+    Department(id=i, id_parent=randint(0, 3), name=department_names[i]) for i in range(4, 30)
 ]
 department_list.extend(department_list_extend)
 type_names=["人事任免","处分通告","科研通告","竞赛通告","学生工作","组织活动","日常管理","紧急通告","宣传通告","贯彻精神"]
-type_list = [Type(id=i, name=choice(type_names)) for i in range(1, 10)]
+type_list = [Type(id=i, name=type_names[i]) for i in range(1, 10)]
 admin_name = [fake.user_name() for i in range(20)]
 admin_list = [
     Admin(
@@ -746,7 +746,7 @@ class_names=[
 class_list = [
     Class(
         id=i,
-        name=choice(class_names),
+        name=class_names[i],
         teacher_id=randint(1, 29),
         begintime=time.time(),
         endtime=time.time(),

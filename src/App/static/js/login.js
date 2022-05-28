@@ -46,7 +46,7 @@ function checkUserid() {
         check = false;
     } else if (obj.value.length) {
         obj.nextElementSibling.style.display = "block";
-        obj.nextElementSibling.innerHTML = "长度不能超过30";
+        obj.nextElementSibling.innerHTML = "长度不能超过20";
         obj.style.marginBottom = "0";
         check = false;
     }
@@ -67,7 +67,7 @@ function checkPassword() {
         check = false;
     } else if (obj.value.length) {
         obj.nextElementSibling.style.display = "block";
-        obj.nextElementSibling.innerHTML = "长度不能超过30";
+        obj.nextElementSibling.innerHTML = "长度不能超过32";
         obj.style.marginBottom = "0";
         check = false;
     }

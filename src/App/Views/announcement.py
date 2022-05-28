@@ -7,7 +7,7 @@
 # @Description      :
 # @Email            : shadowofgost@outlook.com
 # @FilePath         : /ComputerScienceThesis/src/App/Views/announcement.py
-# @LastTime         : 2022-05-07 15:42:00
+# @LastTime         : 2022-05-08 21:20:38
 # @LastAuthor       : Please set LastEditors
 # @Software         : Vscode
 # @Copyright Notice : Copyright (c) 2022 Albert Wang 王子睿, All Rights Reserved.
@@ -23,6 +23,7 @@ from flask import (
     json,
     current_app as app,
 )
+from copy import deepcopy
 from ..Models import Admin, Teacher, Student, Class, Department, Type, db, Announcement
 from ..Utils import public_return as r
 
@@ -119,6 +120,8 @@ def add_announcement():
     data = request.get_data()
     j_data = json.loads(data)
     j_data["add_time"] = time.time()
+    j_data["filedir"] = deepcopy(j_data["rich"])
+    del j_data["rich"]
     cl = Announcement(**j_data)
     try:
         db.session.add(cl)
@@ -135,7 +138,8 @@ def edit_announcement(id):
     data = request.get_data()
     j_data = json.loads(data)
     j_data["add_time"] = time.time()
-    cl = Announcement(**j_data)
+    j_data["filedir"] = deepcopy(j_data["rich"])
+    del j_data["rich"]
     try:
         db.session.query(Announcement).filter_by(id=id).update(j_data)
         db.session.commit()
