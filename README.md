@@ -1,3 +1,4 @@
 # ComputerScienceThesis
 
-# 这是我计算机毕业论文的源代码，设计一款学校管理信息系统，采用AMIS和Flask制作
+这是我计算机毕业论文的源代码，设计一款学校管理信息系统，采用AMIS和Flask制作
+如果需要运行，请先去下载amis的sdk并解压到src/App/static文件夹中，命名为amis文件夹
